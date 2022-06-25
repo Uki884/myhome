@@ -1,12 +1,10 @@
 import React from 'react'
 import { Home } from '@/components/domain/Home';
-import { useTest } from '@/hooks/useTest';
 
 const IndexPage = () => {
-  useTest()
 
   return (
-    <Home />
+    <div>Welcome My Blog!</div>
   )
 }
 export default IndexPage

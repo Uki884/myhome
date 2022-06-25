@@ -1,12 +1,16 @@
 import React from 'react'
+import '../styles/reset.css'
 import App from "next/app";
 import { RecoilRoot } from 'recoil'
+import { CommonLayout } from '@/layouts/CommonLayout';
 class MyApp extends App {
   render() {
     const { Component, pageProps } = this.props;
     return (
       <RecoilRoot>
-        <Component {...pageProps} />
+        <CommonLayout>
+          <Component {...pageProps} />
+        </CommonLayout>
       </RecoilRoot>
     );
   }
