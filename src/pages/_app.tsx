@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/reset.css'
+import 'highlight.js/styles/tokyo-night-dark.css';
 import App from "next/app";
 import { RecoilRoot } from 'recoil'
 import { CommonLayout } from '@/layouts/CommonLayout';
