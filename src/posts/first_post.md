@@ -2,7 +2,7 @@
 title: "技術ブログをNext.jsで作り直しました"
 author: "Uki884"
 category: "example"
-date: "2022-03-13"
+date: "2022-06-27"
 bannerImage: ""
 tags:
     - つぶやき
