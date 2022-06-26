@@ -17,6 +17,7 @@ export const content = style({
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
+  padding: '0 24px'
 });
 
 export const title = style({

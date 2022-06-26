@@ -22,10 +22,11 @@ export const title = style({
 
 export const section = style({
   margin: '24px 0px',
+  padding: '0 60px'
 })
 
 export const image = style({
   width: '100%',
   height: '400px',
-  objectFit: 'contain'
+  objectFit: 'contain',
 })
