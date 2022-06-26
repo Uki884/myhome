@@ -6,7 +6,7 @@ export default class MyDocument extends Document {
     return (
       <Html lang='en'>
         <Head>
-          <link rel='shortcut icon' href='/images/favicon.ico' />
+          <link rel='shortcut icon' href='/favicons/favicon.ico' />
           <link
             href='https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;400;500;700&family=Teko:wght@300;400;500;600;700&display=swap'
             rel='stylesheet'

@@ -10,7 +10,7 @@ export const BaseHeader = () => {
     <header className={styles.header}>
       <div className={styles.content}>
         <div>
-          <div className={styles.title} onClick={() => handleMove('/posts')}>884 Tech Blog</div>
+          <div className={styles.title} onClick={() => handleMove('/')}>884 Tech Blog</div>
         </div>
         <div>
           <div className={styles.title}>About</div>
