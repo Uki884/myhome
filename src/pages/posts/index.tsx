@@ -1,23 +1,11 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import fs from 'fs';
 import matter from 'gray-matter';
-import Link from 'next/link';
 import path from 'path';
+import { Posts } from '@/components/domain/Posts';
 
-export const Posts = ({ posts }: any) => {
-    return <main>
-        {posts.map((post: { slug: any; frontmatter: any; }) => {
-            const {slug, frontmatter} = post
-            const {title, author, category, date, bannerImage, tags} = frontmatter
-            return (<article key={title}>
-                <Link href={`/posts/${slug}`}>
-                    <h1>{title}</h1>
-                </Link>
-                <h3>{author}</h3>
-                <h3>{date}</h3>
-            </article>)
-        })}
-    </main>
+export const PostsPage = ({ posts }: any) => {
+  return <Posts posts={posts} />
 }
 
 export async function getStaticProps(){
@@ -41,4 +29,4 @@ export async function getStaticProps(){
   };
 }
 
-export default Posts
+export default PostsPage

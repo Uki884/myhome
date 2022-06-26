@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { buttons } from './style.css';
-import { BaseButton } from '@/components/common/BaseButton';
+import { BaseButton } from '@/components/common/button/BaseButton';
 import { countState } from '@/recoil/count';
 import { useRecoilState } from 'recoil';
 
