@@ -11,14 +11,29 @@ export const Post = ({frontmatter, content, path, slug}: any) => {
     return bannerImage ? `${slug}/${bannerImage}` : ''
   }, [bannerImage])
 
+  const markdownToHtml = md('default', {
+      langPrefix: 'lang-',
+      linkify: true,
+      breaks: true,
+      html: true,
+    })
+
   return (
     <main className={styles.main}>
-      <h2 className={styles.date}>{date}</h2>
-      <h1 className={styles.title}>{title}</h1>
+      <div>
+        <h2 className={styles.date}>
+          {date} | {category}
+        </h2>
+      </div>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>{title}</h1>
+        <h2 className={styles.tags}>
+          {tags.map((tag: string, index: number) => <div className={styles.tag} key={index}>{tag}</div>)}
+        </h2>
+      </div>
       <section className={styles.section}>
         <BaseImage className={styles.image} src={imageUrl} />
-        <h3>{category} || {tags.join()}</h3>
-        <div dangerouslySetInnerHTML={{ __html: md().use(highlight).render(content) }} />
+        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdownToHtml.use(highlight).render(content) }} />
       </section>
     </main>
   )
