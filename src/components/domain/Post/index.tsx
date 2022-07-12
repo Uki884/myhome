@@ -8,7 +8,7 @@ export const Post = ({frontmatter, content, path, slug}: any) => {
   const { title, author, category, date, bannerImage, tags } = frontmatter
 
   const imageUrl = useMemo(() => {
-    return bannerImage ? `${slug}/${bannerImage}` : ''
+    return bannerImage ? `/${slug}/${bannerImage}` : ''
   }, [bannerImage])
 
   const markdownToHtml = md('default', {
