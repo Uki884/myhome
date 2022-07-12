@@ -3,7 +3,8 @@ import { style, styleVariants } from "@vanilla-extract/css";
 export const main = style({
   maxWidth: 1280,
   margin: "0px auto",
-  paddingTop: '2.5rem',
+  paddingTop: "2.5rem",
+  minHeight: "calc(100vh - 80px)",
 });
 
 export const date = style({
@@ -41,9 +42,10 @@ export const tag = style({
 });
 
 export const section = style({
-  margin: '24px 0px',
-  padding: '0 60px'
-})
+  margin: "80px 0px",
+  padding: "60px",
+  background: "white",
+});
 
 export const image = style({
   width: '100%',

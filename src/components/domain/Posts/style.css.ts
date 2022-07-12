@@ -7,7 +7,8 @@ export const main = style({
   padding: "0 60px",
   display: 'flex',
   gap: 40,
-  flexWrap: 'wrap'
+  flexWrap: 'wrap',
+  minHeight: 'calc(100vh - 80px)'
 });
 
 export const date = style({
