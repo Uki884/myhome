@@ -5,9 +5,14 @@ export const main = style({
   margin: "40px auto",
   paddingTop: "2.5rem",
   padding: "0 60px",
-  display: 'flex',
+  display: "flex",
   gap: 40,
-  flexWrap: 'wrap',
+  flexWrap: "wrap",
+  "@media": {
+    "screen and (max-width: 480px)": {
+      padding: "0 16px",
+    },
+  },
   minHeight: 'calc(100vh - 80px)'
 });
 
@@ -34,4 +39,9 @@ export const image = style({
   height: "200px",
   objectFit: "contain",
   borderBottom: "1px solid #eaeaea",
+  "@media": {
+    "screen and (max-width: 480px)": {
+      height: 160
+    },
+  },
 });

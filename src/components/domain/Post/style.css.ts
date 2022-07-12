@@ -18,6 +18,12 @@ export const title = style({
   fontSize: "3rem",
   textAlign: "center",
   lineHeight: "200%",
+  "@media": {
+    "screen and (max-width: 480px)": {
+      fontSize: "2rem",
+      padding: '0 8px'
+    },
+  },
 });
 
 export const titleWrapper = style({
@@ -42,13 +48,23 @@ export const tag = style({
 });
 
 export const section = style({
-  margin: "80px 0px",
-  padding: "60px",
-  background: "white",
+  margin: "24px 0px",
+  padding: "0 60px",
+  "@media": {
+    "screen and (max-width: 480px)": {
+      padding: "0 16px",
+    },
+  },
 });
 
 export const image = style({
-  width: '100%',
-  height: '400px',
-  objectFit: 'contain',
-})
+  width: "100%",
+  height: "400px",
+  objectFit: "contain",
+  marginBottom: 20,
+  "@media": {
+    "screen and (max-width: 480px)": {
+      height: "200px",
+    },
+  },
+});

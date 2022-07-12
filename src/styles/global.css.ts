@@ -5,3 +5,11 @@ globalStyle("html, body", {
   background: '#FAFAFAFA',
 });
 
+globalStyle(".markdown-body", {
+  padding: 40,
+  "@media": {
+    "screen and (max-width: 480px)": {
+      padding: "20px",
+    },
+  },
+});
