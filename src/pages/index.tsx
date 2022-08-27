@@ -20,7 +20,9 @@ export async function getStaticProps(){
       slug,
       frontmatter,
     };
-  });
+  }).sort((a, b) => {
+    return (b.frontmatter.date >  a.frontmatter.date ? 1 : -1);
+  })
 
   return {
     props: {
