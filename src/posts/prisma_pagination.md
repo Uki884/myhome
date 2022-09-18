@@ -1,8 +1,8 @@
 ---
-title: "Prisma ORMでページネーションを実装する"
+title: "Prismaでlimit,offsetのページネーションを実装する"
 author: "Uki884"
 category: "プログラミング"
-date: "2022-09-11"
+date: "2022-09-18"
 bannerImage: "image.svg"
 tags:
     - プログラミング
@@ -14,11 +14,23 @@ tags:
 
 - Prisma: 3.6.0
 
-まずは、ページネーションを行うメソッドを作っていきます。
+# 完成コード
+早速ですが、こちらが完成コードです。
+引数にprismaのインスタンスとクエリを渡せるようにして、共通使用できるようにしています。ロジックの説明は割愛します;;
 
 src/prisma/helpers/paginate.ts
-
 ```ts
+interface Base {
+  count: ({ where, take, skip }: any) => Promise<number>;
+  findMany: (query) => Promise<any>;
+}
+
+export interface PaginateData<T> {
+  data: T[];
+  total: number;
+  hasNext: boolean;
+}
+
 // ページングでのデータ取得
 export const withPaginate = async <T extends Base, P>(
   prisma: T,
@@ -55,3 +67,12 @@ export const withPaginate = async <T extends Base, P>(
 
 ```
 
+# 使用方法
+こんな感じで使用できます。
+ジェネリクスの第二引数はあらかじめ型を定義したものを渡す必要があって冗長なので改善したいです。。
+
+```ts
+type GetClasses = Class[];
+
+const result = await withPaginate<typeof this.prismaService.class, GetClasses>(this.prismaService.class, query);
+```
