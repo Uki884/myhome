@@ -39,9 +39,10 @@ export const image = style({
   height: "200px",
   objectFit: "contain",
   borderBottom: "1px solid #eaeaea",
+  padding: 14,
   "@media": {
     "screen and (max-width: 480px)": {
-      height: 160
+      height: 160,
     },
   },
 });
