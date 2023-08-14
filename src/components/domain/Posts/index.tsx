@@ -1,7 +1,7 @@
 import React, { Component }  from 'react';
 import Link from 'next/link';
 import * as styles from './style.css'
-import { BaseCard } from '@/components/common/card/BaseCard';
+import { BaseCard } from '@/components/common/BaseCard';
 import Router from 'next/router';
 import { BaseImage } from '@/components/common/BaseImage';
 
