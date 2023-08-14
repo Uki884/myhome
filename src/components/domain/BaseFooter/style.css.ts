@@ -5,4 +5,6 @@ export const footer = style({
   background: 'white',
   width: '100%',
   height: 80,
+  position: 'absolute',
+  bottom: 0,
 });

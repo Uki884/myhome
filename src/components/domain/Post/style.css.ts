@@ -2,9 +2,16 @@ import { style, styleVariants } from "@vanilla-extract/css";
 
 export const main = style({
   maxWidth: 1280,
-  margin: "0px auto",
-  paddingTop: "2.5rem",
-  minHeight: "calc(100vh - 80px)",
+  padding: "120px 60px",
+  margin: "0 auto",
+  gap: 40,
+  "@media": {
+    "screen and (max-width: 480px)": {
+      padding: "0 16px",
+    },
+  },
+  minHeight: "100vh",
+  position: 'relative'
 });
 
 export const date = style({
@@ -49,7 +56,7 @@ export const tag = style({
 
 export const section = style({
   margin: "24px 0px",
-  padding: "0 60px",
+  padding: "0 60px 60px 0",
   "@media": {
     "screen and (max-width: 480px)": {
       padding: "0 16px",

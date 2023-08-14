@@ -2,18 +2,16 @@ import { style, styleVariants } from "@vanilla-extract/css";
 
 export const main = style({
   maxWidth: 1280,
-  margin: "40px auto",
-  paddingTop: "2.5rem",
-  padding: "0 60px",
+  padding: "120px 60px",
   display: "flex",
+  margin: '0 auto',
   gap: 40,
-  flexWrap: "wrap",
   "@media": {
     "screen and (max-width: 480px)": {
       padding: "0 16px",
     },
   },
-  minHeight: 'calc(100vh - 80px)'
+  height: '100vh',
 });
 
 export const date = style({
