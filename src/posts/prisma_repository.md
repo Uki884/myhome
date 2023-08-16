@@ -51,8 +51,9 @@ const userWithFullName = (user: User) => {
 一方、prisma.$extendsを使用してprismaのインスタンスを拡張する時に使用するオブジェクトの管理をしっかり行わないと拡張の処理が分散し、バグを生んでしまうなと考えました。
 そこでドメインモデルごとにrepositoryを作成し、状態を永続化するための関数を作成できるようにします。
 # repositoryを作る
-まず、
-baseとなるrepositoryを作成し、リポジトリ共通の処理を作成し、リポジトリごとに振る舞いが変わらないようにします。
+例としてuser情報を扱うリポジトリを作って見ます。
+
+まず、baseとなるrepositoryを作成し、リポジトリ共通の処理を作成し、リポジトリごとに使用するメソッドを統一します。
 共通の処理なので、appディレクトリに配置することにしました。
 
 src/app/repositories/base.repository.ts
@@ -98,6 +99,7 @@ BaseRepositoryのconstructorで渡したtypeを使い、baseRepositoryを継承�
 UserRepositoryにはsearchというメソッドを追加するclient-extensionsの定義を作成しています。
 
 src/user/repositories/user.repository.ts
+
 ```ts
 import { Prisma } from '@prisma/client';
 import { Injectable } from '@nestjs/common';
@@ -111,6 +113,21 @@ const clientExtension = Prisma.defineExtension((client) => {
   return client.$extends({
     model: {
       user: {
+        create({ userName, uid, address, email }: { userName: string, uid: string, address: string, email: string }) {
+          const prisma = Prisma.getExtensionContext(this);
+          return await prisma.create({
+            data: {
+              name: userName,
+              uid: uid,
+              email,
+              profile: {
+                create: {
+                  address
+                }
+              }
+            }
+          })
+        },
         async search(searchText: string) {
           const prisma = Prisma.getExtensionContext(this);
           return prisma.findMany({
@@ -206,9 +223,99 @@ export class TransactionRepository {
 ```
 
 getTransactionに複数リポジトリを引数で渡せるようにしています。
-こうすることで、this.prismaServiceに対して、各リポジトリで定義したclientExtensionをマージし、1つになったPrismaClientを作成することができます。(型がanyなのは改善の余地あり)
+こうすることで、this.prismaServiceに対して、各リポジトリで定義したclientExtensionをマージし、1つになったPrismaClientを作成したTransactionalClientを取得することができるようになります。(型がanyなのは改善の余地ありですね)
+
 ※例えばUserRepositoryのsearchメソッド、CompanyRepositoryのfindCompanyByIdという関数があったらその両方が適用されたPrismaClientを作成します。
 
-# 使い方
+そして、TransactionRepositoryをどこでも使えるようにTransactionModuleを作成し、@Global()のデコレーターをつけます。
+```ts
+import { Global, Module } from '@nestjs/common';
+import { TransactionRepository } from '../repositories/transaction.repository';
 
-# 今後
+@Global()
+@Module({
+  providers: [TransactionRepository],
+  exports: [TransactionRepository],
+})
+export class TransactionModule {}
+```
+
+最後にapp.moduleで読み込んでおきます
+src/app/app.module.ts
+
+```ts
+import { Module } from '@nestjs/common';
+import { UserModule } from '../user/user.module';
+import { AppController } from './app.controller';
+import { TransactionModule } from './modules/transaction.module';
+
+@Module({
+  imports: [
+    TransactionModule,
+    UserModule,
+  ],
+  controllers: [AppController],
+})
+export class AppModule {}
+
+```
+
+# 使い方
+使い方は他と同様moduleで読み込んでserviceで使います。
+
+```ts
+import { Module } from '@nestjs/common';
+import { UserService } from './services//user.service';
+import { UserController } from './controllers/user.controller';
+
+@Module({
+  controllers: [UserController],
+  providers: [
+    UserService,
+    UserRepository,
+  ],
+  exports: [UserRepository],
+})
+export class UserModule {}
+
+```
+
+そしてserviceのconstructorでリポジトリを読み込んで使います。
+
+```ts
+import { Injectable } from '@nestjs/common';
+import { UserRepository } from '../repositories/user.repository';
+@Injectable()
+export class UserService {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async search(searchQuery: string) {
+    return await this.userRepository.execute().search(searchText);
+  }
+}
+
+```
+
+また、トランザクション処理を行いたい場合は以下のように書きます。
+
+```ts
+const transaction = this.transactionRepository.getTransaction(
+  this.userRepository,
+);
+await transaction(async (prisma) => {
+    await this.userRepository.execute(prisma).create({ userName: 'user1', email: 'hoge@test.com', address: 'example', uid: '123' })
+    await this.userRepository.execute(prisma).create({ userName: 'user2', email: 'hoge2@test.com',  address: 'example', uid: '456' })
+});
+```
+
+これでどちらか一方のユーザ作成が失敗した場合は処理全体がロールバックされます。
+
+# 感想
+
+これを作ったモチベーションはclient-extensionsを試したいだったのですが、
+実際使ってみて、今まで型の問題でできなかったことができるようになり、prismaの進化に驚いています。
+
+ただ、トランザクション周りはもう少しいい感じに書けないかなぁと思っています。
+
+今回はこんな感じで終わろうと思います。
+
