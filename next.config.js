@@ -1,8 +1,9 @@
-import { join } from 'path';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path')
 
 const config = {
   webpack(config, options) {
-    config.resolve.alias["@"] = join(__dirname, "src");
+    config.resolve.alias["@"] = path.join(__dirname, "src");
     return config;
   },
   experimental: {
@@ -10,4 +11,4 @@ const config = {
   },
 };
 
-export default config;
+module.exports = config;
