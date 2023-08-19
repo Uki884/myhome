@@ -7,7 +7,7 @@ import { BaseImage } from '@/components/common/BaseImage';
 
 export const Posts = ({ posts }: any) => {
   return (
-    <main className={styles.main}>
+    <div className={styles.posts}>
     {posts.map((post: { slug: any; frontmatter: any; }) => {
       const {slug, frontmatter} = post
       const { title, author, category, date, bannerImage, tags } = frontmatter
@@ -27,7 +27,7 @@ export const Posts = ({ posts }: any) => {
         </BaseCard>
       )
     })}
-    </main>
+    </div>
   )
 }
 

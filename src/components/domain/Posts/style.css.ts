@@ -1,17 +1,18 @@
 import { style, styleVariants } from "@vanilla-extract/css";
 
-export const main = style({
+export const posts = style({
   maxWidth: 1280,
-  padding: "120px 60px",
   display: "flex",
-  margin: '0 auto',
+  margin: "0 auto",
   gap: 40,
+  paddingTop: 32,
   "@media": {
     "screen and (max-width: 480px)": {
-      padding: "0 16px",
+      flexWrap: "wrap",
+      justifyContent: "center",
     },
   },
-  height: '100vh',
+  height: "100vh",
 });
 
 export const date = style({
