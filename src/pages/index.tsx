@@ -5,7 +5,9 @@ import path from 'path';
 import { Posts } from '@/components/domain/Posts';
 
 export const Index = ({ posts }: any) => {
-  return <Posts posts={posts} />
+  return (
+    <Posts posts={posts} />
+  )
 }
 
 export async function getStaticProps(){

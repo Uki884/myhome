@@ -6,11 +6,12 @@ export const BaseHeader = () => {
   const handleMove = (path: string) => {
     router.push(path)
   }
+
   return (
     <header className={styles.header}>
       <div className={styles.content}>
         <div>
-          <div className={styles.title} onClick={() => handleMove('/')}>884 Tech ブログ</div>
+          <div className={styles.title} onClick={() => handleMove('/')}>884ブログ</div>
         </div>
         <div>
           <div className={styles.title}>About</div>

@@ -12,7 +12,9 @@ class MyApp extends App {
     return (
       <RecoilRoot>
         <CommonLayout>
-          <Component {...pageProps} />
+          <main style={{ flexGrow: 1, paddingTop: 80, paddingBottom: 80 }}>
+            <Component {...pageProps} />
+          </main>
         </CommonLayout>
       </RecoilRoot>
     );
