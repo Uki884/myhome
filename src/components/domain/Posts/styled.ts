@@ -1,12 +1,10 @@
 import styled from "@emotion/styled";
 
 export const $Posts = styled.div`
-  max-width: 1280px;
   display: flex;
-  margin: 0 auto;
-  gap: 40px;
-  padding-top: 32px;
-  height: 100vh;
+  gap: 20px;
+  padding: 32px 20px;
+  flex-wrap: wrap;
 
   @media (max-width: 480px) {
     flex-wrap: wrap;
@@ -37,8 +35,4 @@ export const $Image = styled.img`
   height: 200px;
   object-fit: contain;
   border-bottom: 1px solid #eaeaea;
-
-  @media (max-width: 480px) {
-    height: 160px;
-  }
 `;

@@ -13,7 +13,7 @@ export const CommonLayout = ({ children }: Props) => {
       <Styled.$Main>
         {children}
       </Styled.$Main>
-      <BaseFooter />
+      {/* <BaseFooter /> */}
     </Styled.$Layout>
   )
 }

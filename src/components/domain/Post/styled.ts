@@ -4,12 +4,12 @@ export const $Main = styled.div`
   max-width: 1280px;
   padding: 120px 60px;
   margin: 0 auto;
-  gap: 40px;
+  gap: 32px;
   min-height: 100vh;
   position: relative;
 
   @media (max-width: 480px) {
-    padding: 0 16px;
+    padding: 0;
   }
 `;
 

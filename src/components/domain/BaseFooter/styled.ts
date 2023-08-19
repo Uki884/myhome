@@ -5,4 +5,5 @@ export const $Footer = styled.footer`
   background: white;
   width: 100%;
   height: 80px;
+  min-height: 80px;
 `;
