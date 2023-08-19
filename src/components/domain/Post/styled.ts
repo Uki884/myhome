@@ -7,9 +7,11 @@ export const $Main = styled.div`
   gap: 32px;
   min-height: 100vh;
   position: relative;
+  line-height: 150%;
+  letter-spacing: 0.05em;
 
   @media (max-width: 480px) {
-    padding: 0;
+    padding: 16px 8px;
   }
 `;
 
