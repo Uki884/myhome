@@ -1,6 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
-const { createVanillaExtractPlugin } = require("@vanilla-extract/next-plugin");
-const withVanillaExtract = createVanillaExtractPlugin();
 
 const config = {
   webpack(config, options) {
@@ -12,4 +11,4 @@ const config = {
   },
 };
 
-module.exports = withVanillaExtract(config);
+module.exports = config;

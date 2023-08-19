@@ -1,16 +1,17 @@
-import React from 'react'
-import { colorVariants, button } from './style.css';
-
+import React from 'react';
+import { $Button, $PrimaryButton, $SecondaryButton } from './styled';
 interface Props {
-  children: React.ReactNode,
-  color: keyof typeof colorVariants
-  onClick: () => void
+  children: React.ReactNode;
+  color: 'primary' | 'secondary';
+  onClick: () => void;
 }
 
 export const BaseButton = ({ children, color, onClick }: Props) => {
+  const ButtonComponent = color === 'primary' ? $PrimaryButton : $SecondaryButton;
+
   return (
-    <button className={`${button} ${colorVariants[color]}`} onClick={()=> onClick()}>
-      { children }
-    </button>
-  )
-}
+    <ButtonComponent onClick={onClick}>
+      {children}
+    </ButtonComponent>
+  );
+};

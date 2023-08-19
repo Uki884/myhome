@@ -23,12 +23,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { slug } }: { params: { slug: string } }) {
-    const postsDirectory = path.join(process.cwd(), 'src/posts')
-    const fileName = fs.readFileSync(`${postsDirectory}/${slug}.md`, 'utf-8');
-    const { data: frontmatter, content } = matter(fileName);
+  const postsDirectory = path.join(process.cwd(), 'src/posts')
+  const fileName = fs.readFileSync(`${postsDirectory}/${slug}.md`, 'utf-8');
+  const { data: frontmatter, content } = matter(fileName);
     return {
       props: {
-        frontmatter,
+        frontmatter: frontmatter,
         content,
         path: postsDirectory,
         slug

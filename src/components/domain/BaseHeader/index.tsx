@@ -1,6 +1,6 @@
 import React from 'react'
-import * as styles from './style.css';
 import router from 'next/router'
+import { $Content, $Header, $Title } from './styled'
 
 export const BaseHeader = () => {
   const handleMove = (path: string) => {
@@ -8,15 +8,15 @@ export const BaseHeader = () => {
   }
 
   return (
-    <header className={styles.header}>
-      <div className={styles.content}>
+    <$Header>
+      <$Content>
         <div>
-          <div className={styles.title} onClick={() => handleMove('/')}>884ブログ</div>
+          <$Title onClick={() => handleMove('/')}>884ブログ</$Title>
         </div>
         <div>
-          <div className={styles.title}>About</div>
+          <$Title>About</$Title>
         </div>
-      </div>
-    </header>
+      </$Content>
+    </$Header>
   )
 }
