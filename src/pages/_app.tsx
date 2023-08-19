@@ -1,8 +1,10 @@
 import React from 'react'
-import '@/styles/reset.css'
 import '@/styles/global.css';
 import 'highlight.js/styles/tokyo-night-dark.css';
-import 'github-markdown-css/github-markdown-light.css';
+import 'prismjs/themes/prism-okaidia.css'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
+import 'prismjs/plugins/line-numbers/prism-line-numbers.css'
+
 import App from "next/app";
 import { RecoilRoot } from 'recoil'
 import { CommonLayout } from '@/layouts/CommonLayout';
