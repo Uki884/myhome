@@ -11,7 +11,7 @@ export const BaseHeader = () => {
     <$Header>
       <$Content>
         <div>
-          <$Title onClick={() => handleMove('/')}>884ブログ</$Title>
+          <$Title onClick={() => handleMove('/')}>884 Log</$Title>
         </div>
         <div>
           <$Title>About</$Title>
