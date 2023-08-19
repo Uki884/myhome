@@ -1,8 +1,8 @@
 import React from 'react'
-import * as styles from './style.css';
+import { $Footer } from './styled'
 
 export const BaseFooter = () => {
   return (
-    <footer className={styles.footer} />
+    <$Footer />
   )
 }

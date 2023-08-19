@@ -1,17 +1,19 @@
 import React from 'react'
 import { BaseFooter } from '@/components/domain/BaseFooter'
 import { BaseHeader } from '@/components/domain/BaseHeader'
-import * as styles from './style.css'
+import * as Styled from './styled'
 interface Props {
   children: React.ReactNode
 }
 
 export const CommonLayout = ({ children }: Props) => {
   return (
-    <div className={styles.layout}>
+    <Styled.$Layout>
       <BaseHeader />
-      {children}
+      <Styled.$Main>
+        {children}
+      </Styled.$Main>
       <BaseFooter />
-    </div>
+    </Styled.$Layout>
   )
 }

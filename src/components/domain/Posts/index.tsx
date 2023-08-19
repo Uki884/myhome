@@ -1,13 +1,12 @@
-import React, { Component }  from 'react';
+import React from 'react';
 import Link from 'next/link';
-import * as styles from './style.css'
+import * as Styled from './styled'
 import { BaseCard } from '@/components/common/BaseCard';
 import Router from 'next/router';
-import { BaseImage } from '@/components/common/BaseImage';
 
 export const Posts = ({ posts }: any) => {
   return (
-    <div className={styles.posts}>
+    <Styled.$Posts>
     {posts.map((post: { slug: any; frontmatter: any; }) => {
       const {slug, frontmatter} = post
       const { title, author, category, date, bannerImage, tags } = frontmatter
@@ -18,16 +17,16 @@ export const Posts = ({ posts }: any) => {
       return (
         <BaseCard key={title} onClick={handleMove}>
           <div>
-            <BaseImage className={styles.image} src={bannerImage ? `${slug}/${bannerImage}` : ''} alt="" />
+            <Styled.$Image src={bannerImage ? `${slug}/${bannerImage}` : '/noimage.png'} alt="" />
             <Link href={`/posts/${slug}`}>
-              <h1 className={styles.title}>{title}</h1>
+              <Styled.$Title>{title}</Styled.$Title>
             </Link>
           </div>
-          <h3 className={styles.date}>{date}</h3>
+          <Styled.$Date>{date}</Styled.$Date>
         </BaseCard>
       )
     })}
-    </div>
+    </Styled.$Posts>
   )
 }
 

@@ -1,6 +1,5 @@
 import React from 'react'
-import { card } from './style.css';
-
+import { $Card } from './styled';
 interface Props {
   children: React.ReactNode;
   onClick: () => void
@@ -8,8 +7,8 @@ interface Props {
 
 export const BaseCard = ({ children, onClick }: Props) => {
   return (
-    <div className={card} onClick={onClick}>
+    <$Card onClick={onClick}>
       { children }
-    </div>
+    </$Card>
   )
 }

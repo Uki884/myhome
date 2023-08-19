@@ -2,14 +2,13 @@ import React, { useMemo } from 'react';
 import md from 'markdown-it';
 import highlight from 'markdown-it-highlightjs';
 import typescript from 'highlight.js/lib/languages/typescript';
-import { BaseImage } from '@/components/common/BaseImage';
-import * as styles from './style.css';
+import * as Styled from './styled';
 
 export const Post = ({frontmatter, content, path, slug}: any) => {
   const { title, author, category, date, bannerImage, tags } = frontmatter
 
   const imageUrl = useMemo(() => {
-    return bannerImage ? `/${slug}/${bannerImage}` : ''
+    return bannerImage ? `/${slug}/${bannerImage}` : '/noimage.png'
   }, [bannerImage])
 
   const markdownToHtml = md('default', {
@@ -22,22 +21,22 @@ export const Post = ({frontmatter, content, path, slug}: any) => {
   highlight(markdownToHtml, { register: { typescript } })
 
   return (
-    <main className={styles.main}>
+    <Styled.$Main>
       <div>
-        <h2 className={styles.date}>
+        <Styled.$Date>
           {date} | {category}
-        </h2>
+        </Styled.$Date>
       </div>
-      <div className={styles.titleWrapper}>
-        <h1 className={styles.title}>{title}</h1>
-        <h2 className={styles.tags}>
-          {tags.map((tag: string, index: number) => <div className={styles.tag} key={index}>{tag}</div>)}
-        </h2>
-      </div>
-      <section className={styles.section}>
-        <BaseImage className={styles.image} src={imageUrl} />
+      <Styled.$TitleWrapper>
+        <Styled.$Title>{title}</Styled.$Title>
+        <Styled.$Tags>
+          {tags.map((tag: string, index: number) => <Styled.$Tag key={index}>{tag}</Styled.$Tag>)}
+        </Styled.$Tags>
+      </Styled.$TitleWrapper>
+      <Styled.$Section>
+        <Styled.$Image src={imageUrl} />
         <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdownToHtml.use(highlight).render(content) }} />
-      </section>
-    </main>
+      </Styled.$Section>
+    </Styled.$Main>
   )
 }
