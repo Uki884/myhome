@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import md from 'markdown-it';
 import highlight from 'markdown-it-highlightjs';
+import typescript from 'highlight.js/lib/languages/typescript';
 import { BaseImage } from '@/components/common/BaseImage';
 import * as styles from './style.css';
 
@@ -15,8 +16,10 @@ export const Post = ({frontmatter, content, path, slug}: any) => {
       langPrefix: 'lang-',
       linkify: true,
       breaks: true,
-      html: true,
-    })
+        html: true,
+  })
+
+  highlight(markdownToHtml, { register: { typescript } })
 
   return (
     <main className={styles.main}>
