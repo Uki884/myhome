@@ -7,14 +7,6 @@
 
 /* Remove default margin */
 body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
 dd {
   margin: 0;
 }
@@ -34,7 +26,6 @@ html:focus-within {
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
 /* A elements that don't have a class get default styles */

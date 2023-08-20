@@ -1,5 +1,6 @@
 import React from 'react'
-import { globalStyles } from '@/styles/styled';
+import { globalStyles } from '@/styles/globalStyled';
+import '@/styles/reset.css';
 import 'highlight.js/styles/github-dark.css';
 import 'prismjs/themes/prism-okaidia.css'
 import 'prismjs/plugins/line-numbers/prism-line-numbers.min.js'
