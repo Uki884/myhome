@@ -9,13 +9,8 @@ export const globalStyles = css`
     color: #333333;
   }
 
-  a {
-    color: #333333;
-    text-decoration: none;
-  }
-
   .markdown-body {
-    padding: 40px;
+    padding: 0 40px;
     @media screen and (max-width: 480px) {
       padding: 0;
     }
