@@ -17,13 +17,13 @@ export const PostList = ({ posts }: any) => {
 
       return (
         <BaseCard key={title} onClick={handleMove}>
-          <div>
+          <Styled.$Content>
             <Styled.$Image src={bannerImage ? `${slug}/${bannerImage}` : '/noimage.png'} alt="" />
-            <Link href={`/posts/${slug}`}>
-              <Styled.$Title>{title}</Styled.$Title>
-            </Link>
-          </div>
-          <Styled.$Date>{dayjs(date).format('YYYY年M月DD日')}</Styled.$Date>
+            <Styled.$Title>
+              <Link href={`/posts/${slug}`}>{title}</Link>
+            </Styled.$Title>
+            <Styled.$Date>{dayjs(date).format('YYYY年M月DD日')}</Styled.$Date>
+          </Styled.$Content>
         </BaseCard>
       )
     })}

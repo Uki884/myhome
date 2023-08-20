@@ -12,13 +12,17 @@ export const $Posts = styled.div`
   }
 `;
 
+export const $Content = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+`;
+
 export const $Date = styled.div`
   font-size: 14px;
-  text-align: center;
   line-height: 150%;
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
+  text-align: right;
 `;
 
 export const $Title = styled.h2`
