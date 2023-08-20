@@ -2,6 +2,8 @@ import React, { useMemo } from 'react';
 import md from 'markdown-it';
 import highlight from 'markdown-it-highlightjs';
 import typescript from 'highlight.js/lib/languages/typescript';
+import javascript from 'highlight.js/lib/languages/javascript';
+import vue from 'vue-highlight.js/lib/languages/vue';
 import * as Styled from './styled';
 
 export const Post = ({frontmatter, content, path, slug}: any) => {
@@ -18,7 +20,7 @@ export const Post = ({frontmatter, content, path, slug}: any) => {
         html: true,
   })
 
-  highlight(markdownToHtml, { register: { typescript } })
+  highlight(markdownToHtml, { register: { typescript, javascript, vue } })
 
   return (
     <Styled.$Main>
