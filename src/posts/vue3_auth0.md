@@ -346,7 +346,7 @@ createAppにメソッドチェーンしていくことができます。provide(
 
 components/HelloWorld.vue
 
-```vue
+```ts
 <template>
   <div class="hello">
     {{ user }}
@@ -402,7 +402,7 @@ callbackコンポーネントではtokenやユーザー情報の取得等を行�
 
 views/callback.vue
 
-```vue
+```ts
 <template>
   <div id="callback">
     ログイン中...
