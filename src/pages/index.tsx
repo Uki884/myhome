@@ -2,11 +2,11 @@ import React from 'react';
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
-import { Posts } from '@/components/domain/Posts';
+import { PostList } from '@/components/domain/Post/components/PostList';
 
 export const Index = ({ posts }: any) => {
   return (
-    <Posts posts={posts} />
+    <PostList posts={posts} />
   )
 }
 

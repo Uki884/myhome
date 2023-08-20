@@ -1,6 +1,6 @@
 import React from 'react'
-import { BaseFooter } from '@/components/domain/BaseFooter'
-import { BaseHeader } from '@/components/domain/BaseHeader'
+import { AppFooter } from '@/components/domain/App/AppFooter'
+import { AppHeader } from '@/components/domain/App/AppHeader'
 import * as Styled from './styled'
 interface Props {
   children: React.ReactNode
@@ -9,7 +9,7 @@ interface Props {
 export const CommonLayout = ({ children }: Props) => {
   return (
     <Styled.$Layout>
-      <BaseHeader />
+      <AppHeader />
       <Styled.$Main>
         {children}
       </Styled.$Main>

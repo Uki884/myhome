@@ -5,7 +5,7 @@ import typescript from 'highlight.js/lib/languages/typescript';
 import javascript from 'highlight.js/lib/languages/javascript';
 import * as Styled from './styled';
 
-export const Post = ({frontmatter, content, path, slug}: any) => {
+export const PostDetail = ({frontmatter, content, path, slug}: any) => {
   const { title, author, category, date, bannerImage, tags } = frontmatter
 
   const imageUrl = useMemo(() => {

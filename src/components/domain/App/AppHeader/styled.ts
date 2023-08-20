@@ -24,3 +24,7 @@ export const $Title = styled.h1`
   font-size: 20px;
   cursor: pointer;
 `;
+
+export const $Link = styled.a`
+  cursor: pointer;
+`;

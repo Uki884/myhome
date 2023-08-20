@@ -4,7 +4,7 @@ import * as Styled from './styled'
 import { BaseCard } from '@/components/common/BaseCard';
 import Router from 'next/router';
 
-export const Posts = ({ posts }: any) => {
+export const PostList = ({ posts }: any) => {
   return (
     <Styled.$Posts>
     {posts.map((post: { slug: any; frontmatter: any; }) => {
@@ -29,5 +29,3 @@ export const Posts = ({ posts }: any) => {
     </Styled.$Posts>
   )
 }
-
-export default Posts

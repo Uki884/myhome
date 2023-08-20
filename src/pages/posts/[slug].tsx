@@ -2,10 +2,10 @@ import React from 'react';
 import fs from "fs";
 import matter from "gray-matter";
 import path from 'path';
-import { Post } from '@/components/domain/Post';
+import { PostDetail } from '@/components/domain/Post/components/PostDetail';
 
 export default function PostPage(props: any) {
-  return <Post {...props} />
+  return <PostDetail {...props} />
 }
 
 export async function getStaticPaths() {
