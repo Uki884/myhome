@@ -17,9 +17,16 @@ tags:
 
 この記事のコードで使用しているライブラリのバージョンは以下です。
 - react
+18.2.0
 - react-hook-form
+7.45.1
 - recoil
+0.7.7
 - zod
+3.21.4
+
+また、この記事を書くにあたって作成したサンプルコードは以下です。
+[step-form-with-react-hook-form](https://github.com/Uki884/step-form-with-react-hook-form)
 
 # 実装方針
 
