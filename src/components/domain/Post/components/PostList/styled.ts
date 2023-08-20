@@ -6,6 +6,11 @@ export const $Posts = styled.div`
   padding: 32px 20px;
   flex-wrap: wrap;
 
+  a {
+    color: #333333;
+    text-decoration: none;
+  }
+
   @media (max-width: 480px) {
     flex-wrap: wrap;
     justify-content: center;
