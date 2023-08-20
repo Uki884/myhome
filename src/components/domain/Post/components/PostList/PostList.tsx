@@ -3,6 +3,7 @@ import Link from 'next/link';
 import * as Styled from './styled'
 import { BaseCard } from '@/components/common/BaseCard';
 import Router from 'next/router';
+import dayjs from 'dayjs';
 
 export const PostList = ({ posts }: any) => {
   return (
@@ -22,7 +23,7 @@ export const PostList = ({ posts }: any) => {
               <Styled.$Title>{title}</Styled.$Title>
             </Link>
           </div>
-          <Styled.$Date>{date}</Styled.$Date>
+          <Styled.$Date>{dayjs(date).format('YYYY年M月DD日')}</Styled.$Date>
         </BaseCard>
       )
     })}

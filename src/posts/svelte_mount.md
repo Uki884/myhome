@@ -5,8 +5,8 @@ category: "プログラミング"
 date: "2020/12/13"
 bannerImage: "image.png"
 tags:
-    - つぶやき
-    - 私のこと
+    - svelte
+    - shopify
 ---
 
 最近、副業でshopifyの案件に携わっているのですが、ストアフロントの部分をliquidではなく、javascriptで書いています。 最初はvueで書いていたのですが、最近はsvelteを使ってストアフロント部分を作成するようになりました。

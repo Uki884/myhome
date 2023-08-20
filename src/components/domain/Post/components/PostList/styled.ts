@@ -13,7 +13,7 @@ export const $Posts = styled.div`
 `;
 
 export const $Date = styled.div`
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   line-height: 150%;
   position: absolute;
@@ -24,6 +24,7 @@ export const $Date = styled.div`
 export const $Title = styled.h2`
   font-size: 24px;
   padding: 16px;
+  margin: 0;
 `;
 
 export const $Section = styled.section`
