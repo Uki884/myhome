@@ -11,6 +11,7 @@ export const globalStyles = css`
 
   .markdown-body {
     padding: 0 40px;
+    letter-spacing: 0.1rem;
     @media screen and (max-width: 480px) {
       padding: 0;
     }
