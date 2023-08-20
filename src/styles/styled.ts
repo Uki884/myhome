@@ -6,6 +6,12 @@ export const globalStyles = css`
     font-family: Noto Sans + JP, serif;
     background: #fafafafa;
     margin: 0;
+    color: #333333;
+  }
+
+  a {
+    color: #333333;
+    text-decoration: none;
   }
 
   .markdown-body {

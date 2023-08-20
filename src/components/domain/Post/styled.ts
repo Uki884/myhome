@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const $Main = styled.div`
   max-width: 1280px;
-  padding: 120px 60px;
+  padding: 40px 60px;
   margin: 0 auto;
   gap: 32px;
   min-height: 100vh;

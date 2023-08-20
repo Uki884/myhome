@@ -4,7 +4,7 @@ export const $Header = styled.header`
   z-index: 1000;
   background: white;
   width: 100%;
-  height: 80px;
+  height: 64px;
   border-bottom: 1px solid #eaeaea;
   position: fixed;
   top: 0;
