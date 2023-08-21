@@ -2,25 +2,25 @@ import { PostData } from "@/types";
 import { MicroCMS } from "@/utils/microcms";
 import useSWR from "swr";
 
-export const useFetchPosts = () => {
-  const { fetchPosts } = new MicroCMS();
+export const useFetchPostList = () => {
+  const { fetchPostList } = new MicroCMS();
   const {
-    data: posts,
+    data: postList,
     error,
     isLoading,
     mutate,
-  } = useSWR("api/posts", fetchPosts, {
+  } = useSWR("api/postList", fetchPostList, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
   });
 
   const update = async (data: PostData) => {
-    return await mutate({ ...posts, ...data });
+    return await mutate({ ...postList, ...data });
   };
 
   return {
-    posts,
+    postList,
     error,
     isLoading,
     update,

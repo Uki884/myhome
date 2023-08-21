@@ -11,7 +11,7 @@ export class MicroCMS {
     });
   }
 
-  fetchPosts = async () => {
+  fetchPostList = async () => {
     return await this.client.getList<PostDetail>({
       endpoint: "blogs",
     });

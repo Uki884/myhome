@@ -12,12 +12,12 @@ export const Index = ({ fallback }: any) => {
 }
 
 export const getServerSideProps = async () => {
-  const { fetchPosts } = new MicroCMS();
-  const result = await fetchPosts();
+  const { fetchPostList } = new MicroCMS();
+  const result = await fetchPostList();
   return {
     props: {
       fallback: {
-        'api/posts': result
+        'api/postList': result
       }
     }
   }

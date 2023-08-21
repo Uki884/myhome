@@ -4,16 +4,16 @@ import * as Styled from './styled'
 import { BaseCard } from '@/components/common/BaseCard';
 import Router from 'next/router';
 import dayjs from 'dayjs';
-import { useFetchPosts } from '@/hooks/useFetchPosts';
+import { useFetchPostList } from '@/hooks/useFetchPostList';
 
 export const PostList = () => {
-  const { posts } = useFetchPosts();
+  const { postList } = useFetchPostList();
 
-  if (!posts) return <div>loading...</div>
+  if (!postList) return <div>loading...</div>
 
   return (
     <Styled.$Posts>
-      {posts.contents.map(post => {
+      {postList.contents.map(post => {
         const { id, title, eyecatch, createdAt } = post
         const handleMove = () => {
           Router.push(`/posts/${id}`)
