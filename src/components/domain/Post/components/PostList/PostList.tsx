@@ -20,19 +20,18 @@ export const PostList = () => {
     <Styled.$Posts>
       {postList.contents.map(post => {
         const { id, title, eyecatch, publishedAt } = post
-        const handleMove = () => {
-          Router.push(`/posts/${id}`)
-        }
         return (
-          <BaseCard key={title} onClick={handleMove}>
-            <Styled.$Content>
-              <Styled.$Image src={eyecatch ? `${eyecatch.url}` : '/noimage.png'} alt="" />
-              <Styled.$Title>
-                <Link href={`/posts/${id}`}>{title}</Link>
-              </Styled.$Title>
-              <Styled.$Date>{dayjs(publishedAt).format('YYYY年M月DD日')}</Styled.$Date>
-            </Styled.$Content>
-          </BaseCard>
+          <Link href={`/posts/${id}`} key={title}>
+            <BaseCard>
+              <Styled.$Content>
+                <Styled.$Image src={eyecatch ? `${eyecatch.url}` : '/noimage.png'} alt="" />
+                <Styled.$Title>
+                  {title}
+                </Styled.$Title>
+                <Styled.$Date>{dayjs(publishedAt).format('YYYY年M月DD日')}</Styled.$Date>
+              </Styled.$Content>
+            </BaseCard>
+          </Link>
         )
     })}
     </Styled.$Posts>

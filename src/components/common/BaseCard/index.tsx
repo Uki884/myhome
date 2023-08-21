@@ -2,7 +2,7 @@ import React from 'react'
 import { $Card } from './styled';
 interface Props {
   children: React.ReactNode;
-  onClick: () => void
+  onClick?: () => void
 }
 
 export const BaseCard = ({ children, onClick }: Props) => {
