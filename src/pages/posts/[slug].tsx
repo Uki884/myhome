@@ -3,13 +3,8 @@ import fs from "fs";
 import matter from "gray-matter";
 import path from 'path';
 import { PostDetail } from '@/components/domain/Post/components/PostDetail';
-import { useBlog } from '@/hooks/useBlog';
 
 export default function PostPage(props: any) {
-  const { blog, categoryList } = useBlog();
-
-  console.log('blog', blog, categoryList)
-
   return <PostDetail {...props} />
 }
 

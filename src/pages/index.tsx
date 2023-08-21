@@ -14,12 +14,6 @@ export const Index = ({ posts }: any) => {
 
   console.log('blog', blog, categoryList)
 
-  // React.useEffect(() => {
-  //   // const data = getPostList();
-  //   console.log('data', data)
-  //   getCategoryList();
-  // }, []);
-
   return (
     <PostList posts={posts} />
   )
