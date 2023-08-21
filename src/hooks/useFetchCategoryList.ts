@@ -1,4 +1,4 @@
-import { Category } from "@/types";
+import { CategoryDetail } from "@/types";
 import { MicroCMS } from "@/utils/microcms";
 import useSWR from "swr";
 
@@ -15,7 +15,7 @@ export const useFetchCategoryList = () => {
     revalidateOnReconnect: false,
   });
 
-  const update = async (data: Category) => {
+  const update = async (data: CategoryDetail) => {
     return await mutate({ ...categoryList, ...data });
   };
 

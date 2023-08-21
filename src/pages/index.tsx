@@ -1,45 +1,26 @@
 import React from 'react';
-import fs from 'fs';
-import matter from 'gray-matter';
-import path from 'path';
 import { PostList } from '@/components/domain/Post/components/PostList';
-import { useBlog } from '@/hooks/useBlog';
+import { MicroCMS } from '@/utils/microcms';
+import { SWRConfig } from 'swr';
 
-export const Index = ({ posts }: any) => {
-  const { blog, categoryList } = useBlog();
-
-  if (!blog) {
-    return <>Loading...</>;
-  }
-
-  console.log('blog', blog, categoryList)
-
+export const Index = ({ fallback }: any) => {
   return (
-    <PostList posts={posts} />
+    <SWRConfig value={{ fallback }}>
+      <PostList />
+    </SWRConfig>
   )
 }
 
-export async function getStaticProps(){
-  const postsDirectory = path.join(process.cwd(), 'src/posts')
-  const files = fs.readdirSync(postsDirectory);
-
-  const posts = files.map((fileName) => {
-    const slug = fileName.replace('.md', '');
-    const readFile = fs.readFileSync(`${postsDirectory}/${fileName}`, 'utf-8');
-    const { data: frontmatter } = matter(readFile);
-    return {
-      slug,
-      frontmatter,
-    };
-  }).sort((a, b) => {
-    return (b.frontmatter.date >  a.frontmatter.date ? 1 : -1);
-  })
-
+export const getServerSideProps = async () => {
+  const { fetchPosts } = new MicroCMS();
+  const result = await fetchPosts();
   return {
     props: {
-      posts
-    },
-  };
+      fallback: {
+        'api/posts': result
+      }
+    }
+  }
 }
 
 export default Index

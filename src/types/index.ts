@@ -1,18 +1,18 @@
-export type Blog = {
-  contents: Post[];
-  limit: number;
-  offset: number;
-  totalCount: number;
-}
-
-export type CategoryData = {
-  contents: Category[];
+export type PostData = {
+  contents: PostDetail[];
   limit: number;
   offset: number;
   totalCount: number;
 };
 
-export type Category = {
+export type CategoryData = {
+  contents: CategoryDetail[];
+  limit: number;
+  offset: number;
+  totalCount: number;
+};
+
+export type CategoryDetail = {
   createdAt: string;
   id: string;
   name: string;
@@ -21,8 +21,10 @@ export type Category = {
   updatedAt: string;
 }
 
-export type Post = {
-  category: Category;
+export type PostDetail = {
+  id: string;
+  title: string;
+  category: CategoryDetail;
   content: string;
   createdAt: string;
   eyecatch: {
@@ -30,9 +32,7 @@ export type Post = {
     url: string;
     width: number;
   };
-  id: string;
   publishedAt: string;
   revisedAt: string;
-  title: string;
   updatedAt: string;
-}
+};

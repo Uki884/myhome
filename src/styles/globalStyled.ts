@@ -12,6 +12,10 @@ export const globalStyles = css`
   .markdown-body {
     padding: 0 40px;
     letter-spacing: 0.1rem;
+    img {
+      object-fit: contain;
+      height: 100%;
+    }
     @media screen and (max-width: 480px) {
       padding: 0;
     }
