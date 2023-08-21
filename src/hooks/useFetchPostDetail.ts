@@ -7,7 +7,6 @@ interface Props {
 }
 
 export const useFetchPostDetail = ({ contentId }: Props) => {
-  console.log("contentId", contentId);
   const { fetchPostDetail } = new MicroCMS();
   const {
     data: post,

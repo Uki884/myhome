@@ -18,7 +18,6 @@ export class MicroCMS {
   };
 
   fetchPostDetail = async (contentId: string) => {
-    console.log("contentId", contentId);
     return await this.client.getListDetail<PostDetail>({
       endpoint: "blogs",
       contentId,
