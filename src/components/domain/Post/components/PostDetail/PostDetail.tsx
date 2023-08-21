@@ -3,6 +3,7 @@ import * as Styled from './styled';
 import { useFetchPostDetail } from '@/hooks/useFetchPostDetail';
 import dayjs from 'dayjs';
 import Highlight from 'react-highlight';
+import { Loading } from '@/components/common/Loading';
 interface Props {
   contentId: string
 }
@@ -11,7 +12,7 @@ export const PostDetail = ({ contentId }: Props) => {
   const { post } = useFetchPostDetail({ contentId });
 
   if (!post) {
-    return <div>loading...</div>
+    return <Loading />
   }
 
   const { title, categories, eyecatch, publishedAt, createdAt, content, tags } = post

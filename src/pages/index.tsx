@@ -3,24 +3,10 @@ import { PostList } from '@/components/domain/Post/components/PostList';
 import { MicroCMS } from '@/utils/microcms';
 import { SWRConfig } from 'swr';
 
-export const Index = ({ fallback }: any) => {
+export const Index = () => {
   return (
-    <SWRConfig value={{ fallback }}>
-      <PostList />
-    </SWRConfig>
+    <PostList />
   )
-}
-
-export const getServerSideProps = async () => {
-  const { fetchPostList } = new MicroCMS();
-  const result = await fetchPostList();
-  return {
-    props: {
-      fallback: {
-        'api/postList': result
-      }
-    }
-  }
 }
 
 export default Index

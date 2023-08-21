@@ -1,5 +1,12 @@
 import styled from "@emotion/styled";
 
+export const $Loading = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+`
+
 export const $Posts = styled.div`
   display: flex;
   gap: 20px;
