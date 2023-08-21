@@ -9,7 +9,7 @@ import { Global } from '@emotion/react';
 import { Noto_Sans_JP } from "next/font/google";
 
 const notojp = Noto_Sans_JP({
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });

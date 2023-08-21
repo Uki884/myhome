@@ -3,7 +3,6 @@ import { css } from "@emotion/react";
 export const globalStyles = css`
   html,
   body {
-    font-family: Noto Sans + JP, serif;
     background: #fafafafa;
     margin: 0;
     color: #333333;
