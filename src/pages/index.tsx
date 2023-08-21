@@ -3,8 +3,23 @@ import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
 import { PostList } from '@/components/domain/Post/components/PostList';
+import { useBlog } from '@/hooks/useBlog';
 
 export const Index = ({ posts }: any) => {
+  const { blog, categoryList } = useBlog();
+
+  if (!blog) {
+    return <>Loading...</>;
+  }
+
+  console.log('blog', blog, categoryList)
+
+  // React.useEffect(() => {
+  //   // const data = getPostList();
+  //   console.log('data', data)
+  //   getCategoryList();
+  // }, []);
+
   return (
     <PostList posts={posts} />
   )
