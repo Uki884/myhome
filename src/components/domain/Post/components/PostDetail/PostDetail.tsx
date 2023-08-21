@@ -1,11 +1,8 @@
 import React from 'react';
-import md from 'markdown-it';
-import highlight from 'markdown-it-highlightjs';
-import typescript from 'highlight.js/lib/languages/typescript';
-import javascript from 'highlight.js/lib/languages/javascript';
 import * as Styled from './styled';
 import { useFetchPostDetail } from '@/hooks/useFetchPostDetail';
 import dayjs from 'dayjs';
+import Highlight from 'react-highlight';
 interface Props {
   contentId: string
 }
@@ -17,30 +14,28 @@ export const PostDetail = ({ contentId }: Props) => {
     return <div>loading...</div>
   }
 
-  const { title, category, eyecatch, createdAt } = post
-
-  const markdownToHtml = md('default', {
-    langPrefix: 'lang-',
-    linkify: true,
-    breaks: true,
-    html: true,
-  })
-
-  highlight(markdownToHtml, { register: { typescript, javascript } })
+  const { title, categories, eyecatch, publishedAt, createdAt, content, tags } = post
 
   return (
     <Styled.$Main>
-      <div>
-        <Styled.$Date>
-          {dayjs(createdAt).format('YYYY年M月DD日')} | {category.name}
-        </Styled.$Date>
-      </div>
+      <Styled.$PostInfo>
+        <Styled.$DateList>
+          <Styled.$Date>作成日: {dayjs(createdAt).format('YYYY年M月DD日')}</Styled.$Date>
+          <Styled.$Date>最終更新日: {dayjs(publishedAt).format('YYYY年M月DD日')}</Styled.$Date>
+        </Styled.$DateList>
+        <Styled.$TagWrapper>
+          <Styled.$Category>{categories.length ? categories[0].name : ''}</Styled.$Category>
+          { tags.map(tag => <Styled.$Tag key={tag.id}>{tag.name}</Styled.$Tag>)}
+        </Styled.$TagWrapper>
+      </Styled.$PostInfo>
       <Styled.$TitleWrapper>
         <Styled.$Title>{title}</Styled.$Title>
       </Styled.$TitleWrapper>
       <Styled.$Section>
         <Styled.$Image src={`${eyecatch ? eyecatch.url : '/noimage.png'}`} />
-        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdownToHtml.use(highlight).render(post.content) }} />
+        <Highlight className='markdown-body' innerHTML={true} >
+          { content }
+        </Highlight>
       </Styled.$Section>
     </Styled.$Main>
   )

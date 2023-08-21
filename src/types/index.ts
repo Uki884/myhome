@@ -21,10 +21,20 @@ export type CategoryDetail = {
   updatedAt: string;
 }
 
+export type TagDetail = {
+  createdAt: string;
+  id: string;
+  name: string;
+  publishedAt: string;
+  revisedAt: string;
+  updatedAt: string;
+};
+
 export type PostDetail = {
   id: string;
   title: string;
-  category: CategoryDetail;
+  categories: CategoryDetail[];
+  tags: TagDetail[];
   content: string;
   createdAt: string;
   eyecatch: {

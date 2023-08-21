@@ -1,4 +1,4 @@
-import { PostData, CategoryData, PostDetail } from "@/types";
+import { CategoryData, PostDetail } from "@/types";
 import { createClient } from "microcms-js-sdk";
 
 export class MicroCMS {
@@ -14,6 +14,9 @@ export class MicroCMS {
   fetchPostList = async () => {
     return await this.client.getList<PostDetail>({
       endpoint: "blogs",
+      queries: {
+        orders: "-publishedAt",
+      }
     });
   };
 

@@ -14,7 +14,7 @@ export const PostList = () => {
   return (
     <Styled.$Posts>
       {postList.contents.map(post => {
-        const { id, title, eyecatch, createdAt } = post
+        const { id, title, eyecatch, publishedAt } = post
         const handleMove = () => {
           Router.push(`/posts/${id}`)
         }
@@ -25,7 +25,7 @@ export const PostList = () => {
             <Styled.$Title>
               <Link href={`/posts/${id}`}>{title}</Link>
             </Styled.$Title>
-            <Styled.$Date>{dayjs(createdAt).format('YYYY年M月DD日')}</Styled.$Date>
+            <Styled.$Date>{dayjs(publishedAt).format('YYYY年M月DD日')}</Styled.$Date>
           </Styled.$Content>
         </BaseCard>
       )
