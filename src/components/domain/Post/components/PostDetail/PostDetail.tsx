@@ -1,42 +1,41 @@
-import React, { useMemo } from 'react';
-import md from 'markdown-it';
-import highlight from 'markdown-it-highlightjs';
-import typescript from 'highlight.js/lib/languages/typescript';
-import javascript from 'highlight.js/lib/languages/javascript';
+import React from 'react';
 import * as Styled from './styled';
+import { useFetchPostDetail } from '@/hooks/useFetchPostDetail';
+import dayjs from 'dayjs';
+import Highlight from 'react-highlight';
+interface Props {
+  contentId: string
+}
 
-export const PostDetail = ({frontmatter, content, path, slug}: any) => {
-  const { title, author, category, date, bannerImage, tags } = frontmatter
+export const PostDetail = ({ contentId }: Props) => {
+  const { post } = useFetchPostDetail({ contentId });
 
-  const imageUrl = useMemo(() => {
-    return bannerImage ? `/${slug}/${bannerImage}` : '/noimage.png'
-  }, [bannerImage])
+  if (!post) {
+    return <div>loading...</div>
+  }
 
-  const markdownToHtml = md('default', {
-    langPrefix: 'lang-',
-    linkify: true,
-    breaks: true,
-    html: true,
-  })
-
-  highlight(markdownToHtml, { register: { typescript, javascript } })
+  const { title, categories, eyecatch, publishedAt, createdAt, content, tags } = post
 
   return (
     <Styled.$Main>
-      <div>
-        <Styled.$Date>
-          {date} | {category}
-        </Styled.$Date>
-      </div>
+      <Styled.$PostInfo>
+        <Styled.$DateList>
+          <Styled.$Date>作成日: {dayjs(createdAt).format('YYYY年M月DD日')}</Styled.$Date>
+          <Styled.$Date>最終更新日: {dayjs(publishedAt).format('YYYY年M月DD日')}</Styled.$Date>
+        </Styled.$DateList>
+        <Styled.$TagWrapper>
+          <Styled.$Category>{categories.length ? categories[0].name : ''}</Styled.$Category>
+          { tags.map(tag => <Styled.$Tag key={tag.id}>{tag.name}</Styled.$Tag>)}
+        </Styled.$TagWrapper>
+      </Styled.$PostInfo>
       <Styled.$TitleWrapper>
         <Styled.$Title>{title}</Styled.$Title>
-        <Styled.$Tags>
-          {tags.map((tag: string, index: number) => <Styled.$Tag key={index}>{tag}</Styled.$Tag>)}
-        </Styled.$Tags>
       </Styled.$TitleWrapper>
       <Styled.$Section>
-        <Styled.$Image src={imageUrl} />
-        <div className="markdown-body" dangerouslySetInnerHTML={{ __html: markdownToHtml.use(highlight).render(content) }} />
+        <Styled.$Image src={`${eyecatch ? eyecatch.url : '/noimage.png'}`} />
+        <Highlight className='markdown-body' innerHTML={true} >
+          { content }
+        </Highlight>
       </Styled.$Section>
     </Styled.$Main>
   )

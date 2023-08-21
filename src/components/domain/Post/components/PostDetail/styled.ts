@@ -15,11 +15,25 @@ export const $Main = styled.div`
   }
 `;
 
-export const $Date = styled.div`
+export const $PostInfo = styled.div`
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+`
+
+export const $DateList = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+`
+
+export const $Date = styled.span`
   font-size: 1rem;
   text-align: center;
   line-height: 150%;
   font-weight: 300;
+  margin-right: 8px;
+  font-size: 0.8em;
 `;
 
 export const $Title = styled.h1`
@@ -37,6 +51,24 @@ export const $TitleWrapper = styled.div`
   border-bottom: solid 1px #eaeaea;
 `;
 
+export const $TagWrapper = styled.div`
+  margin-top: 8px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+`
+
+export const $Category = styled.div`
+  display: inline-block;
+  font-size: 12px;
+  padding: 2px 8px;
+  text-decoration: none;
+  background: #2f3a56;
+  color: #fff;
+  border-radius: 2em;
+`;
+
 export const $Tags = styled.div`
   font-size: 12px;
   text-align: center;
@@ -47,11 +79,16 @@ export const $Tags = styled.div`
 `;
 
 export const $Tag = styled.div`
+  display: inline-block;
   font-size: 12px;
-  border: 1px solid #5c93bb2b;
-  border-radius: 2.5em;
-  padding: 0 14px;
-  cursor: pointer;
+  padding: 2px 8px;
+  text-decoration: none;
+  color: #2f3a56;
+  border: 1px solid #2f3a56;
+  border-radius: 2em;
+  &:before {
+    content: "#";
+  }
 `;
 
 export const $Section = styled.section`
