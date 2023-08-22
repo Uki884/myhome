@@ -9,7 +9,6 @@ interface Props {
 }
 
 export default function PostPage({ contentId, fallback }: Props) {
-  console.log('contentId', contentId)
   return (
     <SWRConfig value={{ fallback }}>
       <PostDetail contentId={contentId} />
