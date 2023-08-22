@@ -10,4 +10,12 @@ export const $Card = styled.div`
   position: relative;
   color: #333;
   padding: 16px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.24);
+  transform: translate(0, -2px);
+  transition: box-shadow 0.3s, transform 0.3s;
+
+  &:hover {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    transform: initial;
+  }
 `;
