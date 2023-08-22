@@ -25,8 +25,8 @@ export const PostDetail = ({ contentId }: Props) => {
           <Styled.$Date>最終更新日: {dayjs(publishedAt).format('YYYY年M月DD日')}</Styled.$Date>
         </Styled.$DateList>
         <Styled.$TagWrapper>
-          <Styled.$Category>{categories.length ? categories[0].name : ''}</Styled.$Category>
-          { tags.map(tag => <Styled.$Tag key={tag.id}>{tag.name}</Styled.$Tag>)}
+          <Styled.$Category>{categories?.length ? categories[0].name : ''}</Styled.$Category>
+          { tags?.map(tag => <Styled.$Tag key={tag.id}>{tag.name}</Styled.$Tag>)}
         </Styled.$TagWrapper>
       </Styled.$PostInfo>
       <Styled.$TitleWrapper>

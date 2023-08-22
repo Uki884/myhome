@@ -21,7 +21,7 @@ export async function getStaticProps(){
   return {
     props: {
       fallback: {
-        'api/postList': data
+        'api/posts': data
       },
       revalidate: 1
     },

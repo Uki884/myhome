@@ -9,7 +9,7 @@ export const useFetchPostList = () => {
     error,
     isLoading,
     mutate,
-  } = useSWR("api/postList", fetchPostList, {
+  } = useSWR("api/posts", fetchPostList, {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
