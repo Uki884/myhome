@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import * as Styled from './styled'
 import { BaseCard } from '@/components/common/BaseCard';
-import Router from 'next/router';
 import dayjs from 'dayjs';
 import { useFetchPostList } from '@/hooks/useFetchPostList';
 import { Loading } from '@/components/common/Loading';
