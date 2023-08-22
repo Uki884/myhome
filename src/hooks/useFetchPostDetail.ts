@@ -13,7 +13,8 @@ export const useFetchPostDetail = ({ contentId }: Props) => {
     error,
     isLoading,
     mutate,
-  } = useSWR(`/api/blogs/${contentId}`, () => fetchPostDetail(contentId), {
+  } = useSWR(`api/posts/${contentId}`, () => fetchPostDetail(contentId),
+  {
     revalidateIfStale: false,
     revalidateOnFocus: false,
     revalidateOnReconnect: false,
